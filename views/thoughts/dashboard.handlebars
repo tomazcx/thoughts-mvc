@@ -1,0 +1,29 @@
+<section class="dashboard">
+    <div class="dashboard-container">
+        <h1>Dashboard</h1>
+        <a href="/thoughts/create" class="button">Criar Pensamento</a>
+
+    </div>
+
+    <div>
+        <h2>Seus pensamentos:</h2>
+        {{#if empty}}
+        <span>Ainda não possui nenhum pensamento cadastrado. Crie o seu <a href="/thoughts/create">clicando
+                aqui.</a></span>
+        {{else}}
+            {{#each thoughts}}
+            <div class="thought-dashboard">
+                <span>{{this.title}}</span>
+
+                <div>
+                    <a href="/thoughts/edit/{{this.id}}">Editar</a>
+                    <form action="/thoughts/delete" method="post">
+                        <input type="hidden" name="id" id="id" value="{{this.id}}">
+                        <button href="#" class="">Excluir</button>
+                    </form>
+                </div>
+            </div>
+            {{/each}}
+        {{/if}}
+    </div>
+</section>
